@@ -37,7 +37,7 @@ public class CourseController {
         List<CourseDto> courseDtoList = new ArrayList<>();
         courses.forEach(course -> {
             int userId = course.getUserId();
-            UserDto userDto = restTemplate.getForObject("http://39.98.143.134:8081/user/{id}", UserDto.class,userId);
+            UserDto userDto = restTemplate.getForObject("http://47.98.96.124:8081/user/{id}", UserDto.class,userId);
             assert userDto != null;
             CourseDto courseDto = CourseDto.builder().course(course).userName(userDto.getUserName()).avatarUrl(userDto.getAvatarUrl()).build();
             courseDtoList.add(courseDto);
