@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: UserDtoApplication
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-uf6m7500g66x1ms64eo.mysql.rds.aliyuncs.com:3306/whl?useUnide=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
+    username: wanghuanle
+    password: wanghuanle
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 10000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+    jpa:
+      database: mysql
+      show-sql: true
+      generate-ddl: true
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+        ddl-auto: update
+server:
+  port: 8007
+# 服务注册
+eureka:
+  instance:
+    hostname: wanghuanle.com #主机名
+    profer-ippaddress: true #是否将当前服务的Ip注册到Eureka Server
+  client:
+    #    fetch-registry: true
+    #    register-with-eureka: true
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:7001/eureka/

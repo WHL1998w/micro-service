@@ -1,0 +1,35 @@
+package com.soft1851.study.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+/**
+ * @author wanghuanle
+ * @version 1.0.0
+ * @ClassName StudentCourse.java
+ * @Description TODO
+ * @createTime 2020年09月16日 16:04:00
+ */
+@Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class StudentCourse {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column
+    private int studentId;
+
+    @Column
+    private int courseId;
+
+    private String name;
+    private String courseName;
+}
