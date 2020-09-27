@@ -1,23 +1,35 @@
 server:
-  port: 8088
+  port: 8888
 spring:
   application:
     name: content-center
-  datasource:
-    url: jdbc:mysql://rm-bp13q0jl95pd4zo279o.mysql.rds.aliyuncs.com:3306/content-center
-    hikari:
-      username: wzw
-      password: cM8E!c_89iz2LKV
-      driver-class-name: com.mysql.cj.jdbc.Driver
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: '*'
-    endpoint:
-      health:
-        show-details: always
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
+#        namespace: a0919eec-1ec8-4870-bc12-a40807bbb830
+
+  datasource:
+    url: jdbc:mysql://39.98.143.134:3306/content_center
+    hikari:
+      username: root
+      password: abc.123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+#user-center:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#ribbon:
+#  eager-load:
+#    enabled: true
+#    clients: user-center

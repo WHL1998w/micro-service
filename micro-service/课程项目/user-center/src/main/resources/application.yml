@@ -1,24 +1,33 @@
 server:
-  port: 8083
+  port: 8082
 spring:
   application:
     name: user-center
-  datasource:
-    url: jdbc:mysql://rm-bp13q0jl95pd4zo279o.mysql.rds.aliyuncs.com:3306/content-center
-    hikari:
-      username: wzw
-      password: cM8E!c_89iz2LKV
-      driver-class-name: com.mysql.cj.jdbc.Driver
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: '*'
-    endpoint:
-      health:
-        show-details: always
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
+  #        namespace: 10e5a9a3-05ce-457f-b2a3-02bcfe1b512d
 
+  #        namespace: 1e123488-533d-45bb-9bdc-6870c27e58d8
+  #        metadata:
+  #          instance: cc
+  #          hello: world
+  #          version: 1.0
+
+  datasource:
+    url: jdbc:mysql://3rm-uf6m7500g66x1ms64eo.mysql.rds.aliyuncs.com:3306/user_center
+    hikari:
+      username: wanghuanle
+      password: wanghuanle
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

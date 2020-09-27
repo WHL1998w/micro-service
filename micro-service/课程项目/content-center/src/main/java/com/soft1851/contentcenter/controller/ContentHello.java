@@ -18,7 +18,7 @@ public class ContentHello {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/call")
+    @GetMapping(value = "/call")
     public String getHello(){
         return restTemplate.getForObject("http://localhost:8082/user/hello",String.class);
     }

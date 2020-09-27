@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName
@@ -25,28 +27,35 @@ public class TestController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("discovery")
+    @GetMapping("/discovery")
     public List<ServiceInstance> getInstances(){
         return this.discoveryClient.getInstances("user-center");
     }
 
     @GetMapping("/call/hello")
-    public String callUserCenter(){
+    public String callUserCenter() {
         //用户中心所有的实例信息
         List<ServiceInstance> instances = discoveryClient.getInstances("user-center");
-        Random random = new Random();
-        int index = random.nextInt(instances.size());
-        String targetUrl = instances.get(index).getUri().toString()+"/user/hello";
-
         //stream编程、Lambda表达式、函数式编程
+        //理解这段代码的含义？它实现了什么功能？
 //        String targetUrl = instances.stream()
-//                .map(instance -> instance.getUri().toString()+"/user/hello")
+//                .map(instance -> instance.getUri().toString() + "/user/hello")
 //                .findFirst()
-//                .orElseThrow(()->new IllegalArgumentException("当前没有实例!"));
-        log.info("请求的目标地址：{}",targetUrl);
-        return targetUrl+"："+restTemplate.getForObject(targetUrl,String.class);
+//                .orElseThrow(() -> new IllegalArgumentException("当前没有实例！"));
+
+        //所有实例的uri集合
+        List<String> targetUrls = instances.stream()
+                .map(instance -> instance.getUri().toString() + "/user/hello")
+                .collect(Collectors.toList());
+//        log.info("所有实例地址：{}",targetUrls.toString());
+
+        //随机数
+        int i = ThreadLocalRandom.current().nextInt(targetUrls.size());
+        log.info("请求的目标地址：{}",targetUrls.get(i));
+        return restTemplate.getForObject(targetUrls.get(i),String.class);
     }
 
     @GetMapping(value = "/call/ribbon")
