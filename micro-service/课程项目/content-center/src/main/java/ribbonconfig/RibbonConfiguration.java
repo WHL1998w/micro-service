@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author wanghuanle
  * @Date
  **/
-@Configuration
+//@Configuration
 public class RibbonConfiguration {
     @Bean
     public IRule ribbonRule(){

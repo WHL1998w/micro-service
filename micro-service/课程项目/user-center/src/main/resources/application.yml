@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   application:
     name: user-center
@@ -7,22 +7,15 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-  #        namespace: 10e5a9a3-05ce-457f-b2a3-02bcfe1b512d
+  #        namespace: 7951ac9f-2b92-4790-96db-4e3bbe75c088
 
-  #        namespace: 1e123488-533d-45bb-9bdc-6870c27e58d8
-  #        metadata:
-  #          instance: cc
-  #          hello: world
-  #          version: 1.0
-
+  #        server-addr: 47.98.162.206:8848
   datasource:
-    url: jdbc:mysql://3rm-uf6m7500g66x1ms64eo.mysql.rds.aliyuncs.com:3306/user_center
+    url: jdbc:mysql://rm-uf6m7500g66x1ms64eo.mysql.rds.aliyuncs.com:3306/user-center
     hikari:
       username: wanghuanle
       password: wanghuanle
       driver-class-name: com.mysql.cj.jdbc.Driver
-
-
 management:
   endpoints:
     web:

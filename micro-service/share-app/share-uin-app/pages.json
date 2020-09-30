@@ -1,0 +1,60 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/homePage",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/index/contribute",
+			"style": {
+				"navigationBarTitleText": "投稿"
+			}
+		},
+		{
+			"path": "pages/index/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/index/exchange",
+			"style": {
+				"navigationBarTitleText": "我的兑换"
+			}
+		}
+	],
+	"globalStyle": {
+		// 头部字体的颜色
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "content-sgareL",
+		// 头部bar的字体颜色
+		"navigationBarBackgroundColor": "#fe4543",
+		// 背景颜色
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"color":"#131313",
+		"selectedColor":"#d84855",
+		"list":[{
+			"pagePath":"pages/index/homePage",
+			"text":"首页",
+			"iconPath":"static/images/shouye.png",
+			"selectedIconPath":"static/images/shouye1.png"
+		},
+		{
+			"pagePath":"pages/index/contribute",
+			"text":"投稿",
+			"iconPath":"static/images/tougao.png",
+			"selectedIconPath":"static/images/tougao1.png"
+		},
+		{
+			"pagePath":"pages/index/my",
+			"text":"我的",
+			"iconPath":"static/images/wode.png",
+			"selectedIconPath":"static/images/wode1.png"
+		},
+		]
+	}
+}

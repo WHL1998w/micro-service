@@ -1,9 +1,8 @@
-package com.soft1851.usercenter.controller;
+package com.soft1851.contentcenter.controller;
 
-import com.soft1851.usercenter.domain.entity.User;
-import com.soft1851.usercenter.service.UserService;
+import com.soft1851.contentcenter.domain.dto.ShareDTO;
+import com.soft1851.contentcenter.service.ShareService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,21 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date
  **/
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value =  "/shares")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Slf4j
-public class UserController {
-    private final UserService userService;
+public class ShareController {
+    private final ShareService shareService;
 
     @GetMapping(value = "/{id}")
-    public User findUserById(@PathVariable Integer id) {
-        log.info("我被请求了...");
-        return this.userService.findById(id);
+    public ShareDTO findById(@PathVariable Integer id) {
+        return this.shareService.findById(id);
     }
 
-    @GetMapping("/q")
-    public User query(User user){
-        return user;
+    @GetMapping(value = "/hello")
+    public String getHello(){
+        return this.shareService.getHello();
     }
-
 }
