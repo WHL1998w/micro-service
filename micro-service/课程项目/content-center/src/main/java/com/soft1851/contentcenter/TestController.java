@@ -1,6 +1,7 @@
 package com.soft1851.contentcenter;
 
 import com.soft1851.contentcenter.domain.dto.UserDto;
+import com.soft1851.contentcenter.feignclient.BaiduFeignClient;
 import com.soft1851.contentcenter.feignclient.TestUserCenterFeignClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class TestController {
 
     @Autowired
     private TestUserCenterFeignClient testUserCenterFeignClient;
+
+    @Autowired
+    private BaiduFeignClient baiduFeignClient;
 
     @GetMapping("/discovery")
     public List<ServiceInstance> getInstances(){
@@ -71,6 +75,11 @@ public class TestController {
     @GetMapping(value = "/test-q")
     public UserDto query(UserDto userDto){
         return testUserCenterFeignClient.query(userDto);
+    }
+
+    @GetMapping(value = "/baidu")
+    public String baiduIndex(){
+        return this.baiduFeignClient.index();
     }
 
 }

@@ -18,6 +18,6 @@ public interface TestUserCenterFeignClient {
      * @param userDto
      * @return
      */
-    @GetMapping("/user/q")
+    @GetMapping("/users/q")
     UserDto query(@SpringQueryMap UserDto userDto);
 }

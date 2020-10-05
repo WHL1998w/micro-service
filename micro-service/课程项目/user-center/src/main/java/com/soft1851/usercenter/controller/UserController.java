@@ -29,6 +29,7 @@ public class UserController {
         return this.userService.findById(id);
     }
 
+//    可能构成的请求url:q?id=1&wxId=aaa&...
     @GetMapping("/q")
     public User query(User user){
         return user;
